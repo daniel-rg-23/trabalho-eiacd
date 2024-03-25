@@ -27,10 +27,16 @@ def main():
     
     while not check_win(revealed):
         display_board(board, revealed)
-        print("Enter the row and column of the first tile (e.g., 1 2): ")
-        row1, col1 = map(int, input().split())
-        print("Enter the row and column of the second tile: ")
-        row2, col2 = map(int, input().split())
+        try:
+            print("Enter the row and column of the first tile (e.g., 1 2): ")
+            row1, col1 = map(int, input().split())
+            print("Enter the row and column of the second tile: ")
+            row2, col2 = map(int, input().split())
+            if row1 < 0 or row1 >= size or col1 < 0 or col1 >= size or row2 < 0 or row2 >= size or col2 < 0 or col2 >= size:
+                raise ValueError("Invalid input! Row and column must be within the range of the board size.")
+        except ValueError as e:
+            print(e)
+            continue
         
         if board[row1][col1] == board[row2][col2] and (row1, col1) != (row2, col2):
             revealed[row1][col1] = True
