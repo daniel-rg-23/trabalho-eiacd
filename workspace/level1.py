@@ -62,7 +62,13 @@ class Game:
         self.heuristic=pygame.Rect((WIDTH - 96) // 2 - 322,(HEIGHT - 96) // 2 - 348, 96, 96)
         self.state_stack = []  # Stack to store game states
         self.push_state()
-        
+        self.lampada = pygame.image.load("lampadamenu1.png")
+        self.goback = pygame.image.load("gobackmenu2.png")
+        self.reset = pygame.image.load("resetmenu3.png")
+        self.homeoverlay = pygame.image.load("homeoverlay.png")
+        self.replayoverlay = pygame.image.load("replayoverlay.png")
+        self.nextleveloverlay = pygame.image.load("nextleveloverlay.png")
+
     def push_state(self):
         # Push the current state of the game board onto the stack
         self.state_stack.append((copy.deepcopy(self.quiet_tiles), copy.deepcopy(self.movable_tiles), copy.deepcopy(self.match_tiles), self.counter))
@@ -101,7 +107,15 @@ class Game:
         pygame.draw.rect(self.screen, BLUE, self.home)
         pygame.draw.rect(self.screen, BLUE, self.next)
         pygame.draw.rect(self.screen, BLUE, self.resart2)
+        
+        scaled_image = pygame.transform.scale(self.homeoverlay, (100,100))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2-148, 562))
 
+        scaled_image = pygame.transform.scale(self.replayoverlay, (100,100))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2, 562))
+
+        scaled_image = pygame.transform.scale(self.nextleveloverlay, (100,100))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2+148, 562))
         # Text to display
         text = "Puzzle solved"
         font = pygame.font.SysFont("Calibri", 80, bold=True)  # Use default system font, size 36
@@ -136,10 +150,6 @@ class Game:
 
         pygame.draw.rect(self.screen, BLUE, (rect_x, rect_y, rect_width, rect_height))
         
-        image_rect = self.heuristic  # Assuming self.heuristic is a pygame.Rect object
-        image = pygame.image.load("lampada.png").convert_alpha()
-        resized_image = pygame.transform.scale(image, (50, 50))  # Load your image
-        self.screen.blit(resized_image, image_rect)
         
 
         pygame.draw.rect(self.screen, BLUE, self.heuristic)
@@ -147,8 +157,15 @@ class Game:
         pygame.draw.rect(self.screen, BLUE, self.undo)
         
         pygame.draw.rect(self.screen, BLUE, self.resart)
+        
+        scaled_image = pygame.transform.scale(self.lampada, (96,96))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2-323, 104))
 
+        scaled_image = pygame.transform.scale(self.goback, (96,96))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2-188, 104))
 
+        scaled_image = pygame.transform.scale(self.reset, (96,96))
+        self.screen.blit(scaled_image, ((self.screen.get_width() - scaled_image.get_width()) // 2-55, 104))
 
         # Text to display
         text = "Puzzle 1"

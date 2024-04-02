@@ -17,7 +17,8 @@ class OpeningPage:
         self.start_normal_text = self.font_small.render("Normal", True, WHITE)
         self.start_advanced_text = self.font_small.render("Advanced", True, WHITE)
         self.logo_image = pygame.image.load("logo.png")
-    
+        self.algoritm = pygame.image.load("algoritm.png")
+
     def draw(self, screen):
         screen.fill(LIGHTBLUE)  # Fill the screen with black
         # Draw the title text
@@ -37,6 +38,8 @@ class OpeningPage:
          # Draw the start button
         pygame.draw.rect(screen, BLUE, self.start_advanced)  # Green rectangle as the start button
         pygame.draw.rect(screen, BLUE, self.algorit)
+        scaled_image = pygame.transform.scale(self.algoritm, (80,80))
+        screen.blit(scaled_image, (705, 10))
 
         screen.blit(self.start_normal_text, (self.start_normal.centerx - self.start_normal_text.get_width() // 2,
                                              self.start_normal.centery - self.start_normal_text.get_height() // 2))

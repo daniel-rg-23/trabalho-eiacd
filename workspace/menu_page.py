@@ -10,6 +10,7 @@ class MenuPage:
 
         # Define buttons for menu options
         self.goback = pygame.Rect(580, 70, 120, 80)
+        self.gobackmenu = pygame.image.load("gobackmenupage.png")
         self.puzzle1 = pygame.Rect((screen_width - 400) // 2-100, (screen_height - 50) // 2 - 400, 210, 50)
         self.puzzle2 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 130) // 2 - 400, 210, 50)
         self.puzzle3 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 310) // 2 - 400, 210, 50)
@@ -25,6 +26,10 @@ class MenuPage:
         screen.fill(LIGHTBLUE)
         
         pygame.draw.rect(screen, BLUE, self.goback)
+
+        scaled_image = pygame.transform.scale(self.gobackmenu, (120,80))
+        screen.blit(scaled_image, (580, 70))
+
 
         pygame.draw.rect(screen, BLUE, self.puzzle1)
         # Draw text on buttons

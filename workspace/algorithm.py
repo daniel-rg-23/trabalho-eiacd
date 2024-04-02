@@ -11,12 +11,14 @@ class MenuPage:
         self.goback = pygame.Rect(580, 70, 160, 100)
         self.puzzle1 = pygame.Rect((screen_width - 400) // 2-100, (screen_height +300) // 2 - 400, 400, 200)
         self.puzzle2 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 950) // 2 - 400, 400, 200)
-        
+        self.algoritmback = pygame.image.load("algoritmback.png")
         
     def draw(self, screen):
         screen.fill(LIGHTBLUE)
         
         pygame.draw.rect(screen, BLUE, self.goback)
+        scaled_image = pygame.transform.scale(self.algoritmback, (160,100))
+        screen.blit(scaled_image, (580, 70))
 
         pygame.draw.rect(screen, ORANGE, self.puzzle1)
         # Draw text on buttons
