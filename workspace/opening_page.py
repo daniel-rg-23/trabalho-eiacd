@@ -5,18 +5,44 @@ class OpeningPage:
     def __init__(self, screen_width, screen_height):
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.font = pygame.font.SysFont("Calibri", 80, bold=True)  # You can adjust the font and size
-        self.title_text = self.font.render("Match the Tiles", True, BLUE)  # Render the title text
-        self.start_normal = pygame.Rect(50, 600, 300, 150)  # Define the start button rectangle
-        self.start_advanced = pygame.Rect(430, 600, 300, 150)  # Define the start button rectangle
+        self.font_large = pygame.font.SysFont("Calibri", 108, bold=True)  # Font for the title
+        self.font_small = pygame.font.SysFont("Calibri", 50, bold=True)  # Font for the bottom buttons
+
+        self.title_text = self.font_large.render("Match the Tiles", True, WHITE)  # Render the title text
+        self.title_text_outline = self.font_large.render("Match the Tiles", True, BLUE)  # Render the title text
+
+        self.start_normal = pygame.Rect(50, 760, 300, 150)  # Define the start button rectangle
+        self.start_advanced = pygame.Rect(430, 760, 300, 150)  # Define the start button rectangle
+        self.algorit = pygame.Rect(705, 10, 80, 80)  # Define the start button rectangle
+        self.start_normal_text = self.font_small.render("Normal", True, WHITE)
+        self.start_advanced_text = self.font_small.render("Advanced", True, WHITE)
+        self.logo_image = pygame.image.load("logo.png")
+    
     def draw(self, screen):
         screen.fill(LIGHTBLUE)  # Fill the screen with black
         # Draw the title text
-        screen.blit(self.title_text, (self.screen_width // 2 - self.title_text.get_width() // 2, 200))
+        screen.blit(self.logo_image, (self.screen_width // 2 - self.logo_image.get_width() // 2, 130))
+
+        for dx in range(-3, 4):
+            for dy in range(-3, 4):
+                if dx != 0 or dy != 0:
+                    screen.blit(self.title_text_outline, (10 + dx, 325 + dy))
+
+        # Blit the main text
+        screen.blit(self.title_text, (10, 325))
+
+        #screen.blit(self.title_text, (self.screen_width // 2 - self.title_text.get_width() // 2, 200))
         # Draw the start button
         pygame.draw.rect(screen, BLUE, self.start_normal)  # Green rectangle as the start button
          # Draw the start button
         pygame.draw.rect(screen, BLUE, self.start_advanced)  # Green rectangle as the start button
+        pygame.draw.rect(screen, BLUE, self.algorit)
+
+        screen.blit(self.start_normal_text, (self.start_normal.centerx - self.start_normal_text.get_width() // 2,
+                                             self.start_normal.centery - self.start_normal_text.get_height() // 2))
+        screen.blit(self.start_advanced_text, (self.start_advanced.centerx - self.start_advanced_text.get_width() // 2,
+                                                self.start_advanced.centery - self.start_advanced_text.get_height() // 2))
+
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

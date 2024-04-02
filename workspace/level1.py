@@ -54,22 +54,29 @@ class Game:
         self.match_tiles = self.create_game2()
         self.number_tiles_move = 2
         self.counter = 0
-        self.home = pygame.Rect((WIDTH - 96) // 2 - 55,(HEIGHT - 96) // 2 +50, 96, 96)
+        self.home = pygame.Rect((WIDTH - 96) // 2 -150,(HEIGHT - 96) // 2 +110, 100, 100)
+        self.next = pygame.Rect((WIDTH - 96) // 2 ,(HEIGHT - 96) // 2 +110, 100, 100)
+        self.resart2 = pygame.Rect((WIDTH - 96) // 2 +150,(HEIGHT - 96) // 2 +110, 100, 100)
         self.resart = pygame.Rect((WIDTH - 96) // 2 - 55,(HEIGHT - 96) // 2 -348, 96, 96)
-        self.undo = pygame.Rect((WIDTH - 96) // 2 - 193,(HEIGHT - 96) // 2 - 348, 96, 96)
+        self.undo = pygame.Rect((WIDTH - 96) // 2 - 188,(HEIGHT - 96) // 2 - 348, 96, 96)
         self.heuristic=pygame.Rect((WIDTH - 96) // 2 - 322,(HEIGHT - 96) // 2 - 348, 96, 96)
         self.state_stack = []  # Stack to store game states
         self.push_state()
-
+        
     def push_state(self):
         # Push the current state of the game board onto the stack
         self.state_stack.append((copy.deepcopy(self.quiet_tiles), copy.deepcopy(self.movable_tiles), copy.deepcopy(self.match_tiles), self.counter))
 
     def pop_state(self):
-        # Pop the last state from the stack and set the game board to that state
+    # Pop the last state from the stack and set the game board to that state
         if self.state_stack:
-            self.quiet_tiles, self.movable_tiles, self.match_tiles, self.counter = self.state_stack.pop()
+            prev_state = self.state_stack.pop()
+            self.quiet_tiles, self.movable_tiles, self.match_tiles, self.counter = prev_state
             self.draw()  # Redraw the screen after undoing the move
+            return prev_state  # Return the popped state
+        else:
+            print("No moves to undo.")
+
 
     def reset_level(self):
         # Reset all game variables to their initial state
@@ -92,12 +99,27 @@ class Game:
         rect_y = (self.screen.get_height() - rect_height) // 2 
         pygame.draw.rect(self.screen, LIGHTBLUE, (rect_x, rect_y, rect_width, rect_height))
         pygame.draw.rect(self.screen, BLUE, self.home)
+        pygame.draw.rect(self.screen, BLUE, self.next)
+        pygame.draw.rect(self.screen, BLUE, self.resart2)
+
         # Text to display
         text = "Puzzle solved"
         font = pygame.font.SysFont("Calibri", 80, bold=True)  # Use default system font, size 36
         text_surface = font.render(text, True, BLUEGREEN)  # Render text
         text_rect = text_surface.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 3 + 15))  # Center the text
         self.screen.blit(text_surface, text_rect)  # Draw text
+
+        text = "You solved this puzzle in 7 moves"
+        font = pygame.font.SysFont("Calibri", 30)  # Use default system font, size 36
+        text_surface = font.render(text, True, BLUEGREEN)  # Render text
+        text_rect = text_surface.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 3 + 115))  # Center the text
+        self.screen.blit(text_surface, text_rect)  # Draw text
+
+        text = "Perfect move: 6 moves"
+        font = pygame.font.SysFont("Calibri", 30)  # Use default system font, size 36
+        text_surface = font.render(text, True, BLUEGREEN)  # Render text
+        text_rect = text_surface.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 3 + 165))  # Center the text
+        self.screen.blit(text_surface, text_rect)  # Draw text   
 
     def draw_rectangles(self):
     
@@ -107,18 +129,22 @@ class Game:
         rect_y = (self.screen.get_height() - rect_height) // 2 - 394
         pygame.draw.rect(self.screen, BLUE, (rect_x, rect_y, rect_width, rect_height))
 
-        rect_width = 373 # Adjust as needed
+        rect_width = 373 # Adjust as neededresized_image = pygame.transform.scale(image, (50, 50))
         rect_height = 83 # Adjust as needed
         rect_x = (self.screen.get_width() - rect_width) // 2-193
         rect_y = (self.screen.get_height() - rect_height) // 2 - 447
 
         pygame.draw.rect(self.screen, BLUE, (rect_x, rect_y, rect_width, rect_height))
-
+        
+        image_rect = self.heuristic  # Assuming self.heuristic is a pygame.Rect object
+        image = pygame.image.load("lampada.png").convert_alpha()
+        resized_image = pygame.transform.scale(image, (50, 50))  # Load your image
+        self.screen.blit(resized_image, image_rect)
         
 
         pygame.draw.rect(self.screen, BLUE, self.heuristic)
-
-        pygame.draw.rect(self.screen, BLACK, self.undo)
+        
+        pygame.draw.rect(self.screen, BLUE, self.undo)
         
         pygame.draw.rect(self.screen, BLUE, self.resart)
 
@@ -147,7 +173,7 @@ class Game:
         self.screen.blit(text_surface, text_rect)  # Draw text
         
         # Text to display
-        text = "Perfect: 0"
+        text = "Perfect: 6"
         font = pygame.font.SysFont("Calibri", 36)  # Use default system font, size 36
         text_surface = font.render(text, True, LIGHTBLUE)  # Render text
         text_rect = text_surface.get_rect(center=(self.screen.get_width() // 2 + 183, self.screen.get_height() // 3 -175))  # Center the text
@@ -424,7 +450,6 @@ class Game:
                        self.reset_level() 
             return False
         
-        tiles_moved = False  # Flag to track if any tiles were moved
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
