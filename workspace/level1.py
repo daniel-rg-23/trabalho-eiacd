@@ -47,7 +47,6 @@ class Game:
         self.overlay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
         self.overlay_surface.fill((0, 0, 0, self.overlay_alpha))
         self.checkmarks_appeared = False
-        self.high_score = float(self.get_high_scores()[0])
         self.all_sprites = pygame.sprite.Group()
         self.tiles = []     
         self.quiet_tiles = self.create_game()
@@ -154,10 +153,6 @@ class Game:
         text_rect = text_surface.get_rect(center=(self.screen.get_width() // 2 + 183, self.screen.get_height() // 3 -175))  # Center the text
         self.screen.blit(text_surface, text_rect)  # Draw text
 
-    def get_high_scores(self):
-        with open("high_score.txt", "r") as file:
-            scores = file.read().splitlines()
-        return scores
 
     def save_score(self):
         with open("high_score.txt", "w") as file:
