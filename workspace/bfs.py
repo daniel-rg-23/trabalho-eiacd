@@ -30,8 +30,8 @@ class Graph:
 
         return None  # If path doesn't exist
 
-# Define the matrix
-matrix = [
+# Define the board
+board = [
     [1, 0, 0, 0],
     [3, 0, 1, 0],
     [3, 2, 0, 2],
@@ -41,7 +41,7 @@ matrix = [
 # Define the starting and ending positions
 start_pos = None
 end_pos = None
-for i, row in enumerate(matrix):
+for i, row in enumerate(board):
     for j, value in enumerate(row):
         if value == 2:
             start_pos = (i, j)
@@ -49,7 +49,7 @@ for i, row in enumerate(matrix):
             end_pos = (i, j)
 
 # Create a Graph object and find the shortest path
-graph = Graph(matrix)
+graph = Graph(board)
 
 # Measure the execution time
 start_time = time.time()
