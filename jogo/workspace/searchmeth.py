@@ -162,8 +162,4 @@ class Algorithm:
 #acho melhor se usarmos o weight de 1 assim como o custo de cada movimento, entao para chamar pomos o valor tipo:
 #result = weighted_a_star_search(initial_state, goal_state_func, heuristic_func, cost_func, successors_func, weight=1)
 
-    
-    def cost_func(current_state, successor_state):
-        return 1
-        
 
