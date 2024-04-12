@@ -111,3 +111,59 @@ class Algorithm:
 
         return None  # If the open_list is empty and goal was not found
 
+    def a_star_search(initial_state, goal_state_func, heuristic_func, cost_func, successors_func):
+        open_list = []
+        initial_node = TreeNode(initial_state, g=0, h=heuristic_func(initial_state))
+        heapq.heappush(open_list, initial_node)
+
+        closed_list = set()
+
+        while open_list:
+            current_node = heapq.heappop(open_list)
+
+            if goal_state_func(current_node.state):
+                return current_node  
+
+            closed_list.add(current_node.state)
+
+            for successor in successors_func(current_node.state):
+                if successor not in closed_list:
+                    g_value = current_node.g + cost_func(current_node.state, successor)
+                    h_value = heuristic_func(successor)
+                    successor_node = TreeNode(successor, parent=current_node, g=g_value, h=h_value)
+                    heapq.heappush(open_list, successor_node)
+
+        return None 
+
+    def weighted_a_star_search(initial_state, goal_state_func, heuristic_func, cost_func, successors_func, weight):
+        open_list = []
+        initial_node = TreeNode(initial_state, g=0, h=heuristic_func(initial_state))
+        heapq.heappush(open_list, initial_node)
+
+        closed_list = set()
+
+        while open_list:
+            current_node = heapq.heappop(open_list)
+
+            if goal_state_func(current_node.state):
+                return current_node  
+
+            closed_list.add(current_node.state)
+
+            for successor in successors_func(current_node.state):
+                if successor not in closed_list:
+                    g_value = current_node.g + cost_func(current_node.state, successor)
+                    h_value = weight * heuristic_func(successor)  # Apply weight to the heuristic value
+                    successor_node = TreeNode(successor, parent=current_node, g=g_value, h=h_value)
+                    heapq.heappush(open_list, successor_node)
+
+        return None
+
+#acho melhor se usarmos o weight de 1 assim como o custo de cada movimento, entao para chamar pomos o valor tipo:
+#result = weighted_a_star_search(initial_state, goal_state_func, heuristic_func, cost_func, successors_func, weight=1)
+
+    
+    def cost_func(current_state, successor_state):
+        return 1
+        
+
