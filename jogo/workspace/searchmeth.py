@@ -43,7 +43,6 @@ class Algorithm:
 #def goal_state_func(state): implement for each level
     #pass
 
-# A função operators_func() gera todos os possíveis estados sucessores de um estado dado.
 #def operators_func(state):
     # Implemente a lógica para gerar novos estados a partir do estado atual.
  #   pass
