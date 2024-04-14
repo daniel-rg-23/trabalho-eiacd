@@ -15,6 +15,13 @@ pip install pygame
 ### In your system
 > From github
 
-In order to get access to the different files that make the game, click [here](https://github.com/daniel-rg-23/trabalho-eiacd)
+  In order to get access to the different files that make the game, click [here](https://github.com/daniel-rg-23/trabalho-eiacd)
+  You can run the code by downloading each of the files.
+
+> [!TIP]
+> Make sure you insert each file inside the correspondent folder, otherwise your code may have difficulties in running
+
+>From Visual Studio Code
+
 
 including a “readme” file with instructions on how to compile, run and use the program.
