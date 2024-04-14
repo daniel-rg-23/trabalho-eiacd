@@ -51,7 +51,6 @@ Once the game opens the first thing you will see is the title `Match the tiles` 
 ```
   + DFS
   + BFS
-  + Depth limited search
   + Iterative deepening
   + Greedy search
   + A star
