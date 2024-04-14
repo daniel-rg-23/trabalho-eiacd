@@ -1,4 +1,4 @@
-# Match the tiles <img src="https://github.com/daniel-rg-23/trabalho-eiacd/assets/164920645/6d049b14-0475-4005-aedc-9f27a0889d74" alt="Description of the image" width="60" height="60">
+# Match the tiles <img src="https://github.com/daniel-rg-23/trabalho-eiacd/assets/164920645/6d049b14-0475-4005-aedc-9f27a0889d74" alt="Description of the image" width="100" height="100">
 
 > Game instructions
 ----------------------
@@ -43,6 +43,36 @@ And you can access to the github data _without_ downloading any _extra_ file. Yo
 ## To play the game
 Once the game opens the first thing you will see is the title `Match the tiles` and below it the `Play!` _buttom_.
 
-1. 
+1. Before starting the game you should define wich algorithm you would like to use to help you solve the game.
+   + click in :
+ <img src="https://github.com/daniel-rg-23/trabalho-eiacd/blob/main/jogo/algoritm.png?raw=true" alt="Image Description" width="100" height="100">
 
-including a “readme” file with instructions on how to compile, run and use the program.
+2. select between :
+```
+  + DFS
+  + BFS
+  + Depth limited search
+  + Iterative deepening
+  + Greedy search
+  + A star
+  + Weighted A star
+```
+
+3. Now you can click in _Play!_ and you will find another screen that will have different levels.
+4. In the game you will have ***two pieces*** that you have to get to an _objective point_. If you made a mistake and you would like to go back to your last play, or to restart the level, you can do so by click in:
+   
+ <img src="https://github.com/daniel-rg-23/trabalho-eiacd/blob/main/jogo/replayoverlay.png?raw=true" alt="Image Description" width="100" height="100">
+
+5. If you wanted for the computer to solve the level for you by using the searchmethod previously stated you just have to click in:
+   
+<img src="https://github.com/daniel-rg-23/trabalho-eiacd/blob/main/jogo/lampadamenu1.png?raw=true" alt="Image Description" width="100" height="100">
+
+7. As the level is finished you will see the number of _moves_ it took you to finish, and the how many moves it could be solved in (_perfect_)
+```
+moves:--
+perfect:--
+```
+9. Now that the level ***is solved*** you can go back to the home page and change the search method, or you can go to the next level and try solving it.
+
+> [!IMPORTANT]
+> ***HAVE FUN!!***
