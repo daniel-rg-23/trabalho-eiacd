@@ -17,6 +17,7 @@ class MenuPage:
         self.puzzle4 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 490) // 2 - 400, 210, 50)
         self.puzzle5 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 670) // 2 - 400, 210, 50)
 
+    def draw(self, screen):
 
         screen.fill(LIGHTBLUE)
         
@@ -56,7 +57,6 @@ class MenuPage:
         start_text_pos = start_text.get_rect(center=self.puzzle5.center)
         screen.blit(start_text, start_text_pos)
 
-        pygame.draw.rect(screen, BLUE, self.puzzle6)
         # Draw text on buttons
 
     def handle_events(self):
