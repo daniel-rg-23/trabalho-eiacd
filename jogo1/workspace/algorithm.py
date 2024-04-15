@@ -8,13 +8,13 @@ class AlgorithmPage:
         self.font = pygame.font.SysFont("Calibri", 45, bold=True)
         
         # Define buttons for menu options
-      self.goback = pygame.Rect(580, 70, 160, 100)
-        self.BFS = pygame.Rect((screen_width - 400) // 2-100, (screen_height - 50) // 2 - 400, 210, 50)
-        self.DFS = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 130) // 2 - 400, 210, 50)
-        self.Iterative_D = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 310) // 2 - 400, 210, 50)
-        self.Greedy = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 490) // 2 - 400, 210, 50)
-        self.A_star = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 670) // 2 - 400, 210, 50)
-        self.Weighted_A_star = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 850) // 2 - 400, 210, 50)
+        self.goback = pygame.Rect(580, 70, 160, 100)
+        self.BFS = pygame.Rect((screen_width - 400) // 2-100, (screen_height - 50) // 2 - 400, 310, 50)
+        self.DFS = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 130) // 2 - 400, 310, 50)
+        self.Iterative_D = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 310) // 2 - 400, 310, 50)
+        self.Greedy = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 490) // 2 - 400, 310, 50)
+        self.A_star = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 670) // 2 - 400, 310, 50)
+        self.Weighted_A_star = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 850) // 2 - 400, 310, 50)
         self.algoritmback = pygame.image.load("algoritmback.png")
         
     def draw(self, screen):
@@ -27,37 +27,37 @@ class AlgorithmPage:
         pygame.draw.rect(screen, ORANGE, self.BFS)
         # Draw text on buttons
         start_text = self.font.render("BFS", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle1.center)
+        start_text_pos = start_text.get_rect(center=self.BFS.center)
         screen.blit(start_text, start_text_pos)
 
         pygame.draw.rect(screen, ORANGE, self.DFS)
         # Draw text on buttons
         start_text = self.font.render("DFS", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle1.center)
+        start_text_pos = start_text.get_rect(center=self.DFS.center)
         screen.blit(start_text, start_text_pos)
 
         pygame.draw.rect(screen, ORANGE, self.Iterative_D)
         # Draw text on buttons
         start_text = self.font.render("Iterative D", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle1.center)
+        start_text_pos = start_text.get_rect(center=self.Iterative_D.center)
         screen.blit(start_text, start_text_pos)
 
         pygame.draw.rect(screen, BLUE, self.Greedy)
         # Draw text on buttons
         start_text = self.font.render("Greedy", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle2.center)
+        start_text_pos = start_text.get_rect(center=self.Greedy.center)
         screen.blit(start_text, start_text_pos)
 
         pygame.draw.rect(screen, BLUE, self.A_star)
         # Draw text on buttons
         start_text = self.font.render("A*", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle2.center)
+        start_text_pos = start_text.get_rect(center=self.A_star.center)
         screen.blit(start_text, start_text_pos)
 
         pygame.draw.rect(screen, BLUE, self.Weighted_A_star)
         # Draw text on buttons
         start_text = self.font.render("Weighted A*", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle2.center)
+        start_text_pos = start_text.get_rect(center=self.Weighted_A_star.center)
         screen.blit(start_text, start_text_pos)
     
     def handle_events(self):
