@@ -12,15 +12,30 @@ pip install pygame
 ```
 > [!NOTE]
 > In case you wanted to know more details regarding the use of pygame, click [here](https://www.pygame.org/docs/)
+-------------------------
 
 ### In your system
-</sub>***From github***
+</sub>***From your terminal***
 
-  In order to get access to the different files that make the game, click [here](https://github.com/daniel-rg-23/trabalho-eiacd)
-  You can run the code by downloading each of the files.
+If you want to run the game without using an external site, you can do so by downloading every file
 
 > [!TIP]
 > Make sure you insert each file inside the correspondent folder, otherwise your code may have difficulties in running
+
+Once you have all your files in order, position yourself on the folder containing all the files for the game by changing your directory using the next command:
+```
+cd <name of the directory you want to go to>
+```
+Then you can insert in your terminal the next command:
+```
+python <main file>
+```
+That should allow you to interact with the game.
+
+</sub>***From github***
+
+  In order to get access to the different files that make the game, click [here](https://github.com/daniel-rg-23/trabalho-eiacd)
+  You can run the code by downloading each of the files. And following the steps on how to run it in your terminal.
 
 </sub>***From Visual Studio Code***
 
