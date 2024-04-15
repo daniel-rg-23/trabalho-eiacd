@@ -11,7 +11,7 @@ class OpeningPage:
         self.title_text = self.font_large.render("Match the Tiles", True, WHITE)  # Render the title text
         self.title_text_outline = self.font_large.render("Match the Tiles", True, BLUE)  # Render the title text
 
-        self.start_normal = pygame.Rect(240, 760, 300, 150)  # Define the start button rectangle
+        self.start_play = pygame.Rect(240, 760, 300, 150)  # Define the start button rectangle
         self.algorit = pygame.Rect(705, 10, 80, 80)  # Define the start button rectangle
         self.start_play_text = self.font_small.render("Play!", True, WHITE)
         self.logo_image = pygame.image.load("logo.png")
@@ -32,17 +32,14 @@ class OpeningPage:
 
         #screen.blit(self.title_text, (self.screen_width // 2 - self.title_text.get_width() // 2, 200))
         # Draw the start button
-        pygame.draw.rect(screen, BLUE, self.start_normal)  # Green rectangle as the start button
+        pygame.draw.rect(screen, BLUE, self.start_play)  # Green rectangle as the start button
          # Draw the start button
-        pygame.draw.rect(screen, BLUE, self.start_advanced)  # Green rectangle as the start button
         pygame.draw.rect(screen, BLUE, self.algorit)
         scaled_image = pygame.transform.scale(self.algoritm, (80,80))
         screen.blit(scaled_image, (705, 10))
 
-        screen.blit(self.start_normal_text, (self.start_normal.centerx - self.start_normal_text.get_width() // 2,
-                                             self.start_normal.centery - self.start_normal_text.get_height() // 2))
-        screen.blit(self.start_advanced_text, (self.start_advanced.centerx - self.start_advanced_text.get_width() // 2,
-                                                self.start_advanced.centery - self.start_advanced_text.get_height() // 2))
+        screen.blit(self.start_play_text, (self.start_play.centerx - self.start_play_text.get_width() // 2,
+                                             self.start_play.centery - self.start_play_text.get_height() // 2))
 
     def handle_events(self):
         for event in pygame.event.get():
