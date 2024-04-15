@@ -11,11 +11,9 @@ class OpeningPage:
         self.title_text = self.font_large.render("Match the Tiles", True, WHITE)  # Render the title text
         self.title_text_outline = self.font_large.render("Match the Tiles", True, BLUE)  # Render the title text
 
-        self.start_normal = pygame.Rect(50, 760, 300, 150)  # Define the start button rectangle
-        self.start_advanced = pygame.Rect(430, 760, 300, 150)  # Define the start button rectangle
+        self.start_normal = pygame.Rect(240, 760, 300, 150)  # Define the start button rectangle
         self.algorit = pygame.Rect(705, 10, 80, 80)  # Define the start button rectangle
-        self.start_normal_text = self.font_small.render("Normal", True, WHITE)
-        self.start_advanced_text = self.font_small.render("Advanced", True, WHITE)
+        self.start_play_text = self.font_small.render("Play!", True, WHITE)
         self.logo_image = pygame.image.load("logo.png")
         self.algoritm = pygame.image.load("algoritm.png")
 
@@ -54,11 +52,8 @@ class OpeningPage:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:  # Check if left mouse button is clicked
                     mouse_pos = pygame.mouse.get_pos()
-                    if self.start_normal.collidepoint(mouse_pos):
+                    if self.start_play.collidepoint(mouse_pos):
                         return True  # Return True if the start button is clicked
                     if self.algorit.collidepoint(mouse_pos):
                         return "choose"
         return False
-
-
-
