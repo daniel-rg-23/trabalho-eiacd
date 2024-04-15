@@ -16,12 +16,7 @@ class MenuPage:
         self.puzzle3 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 310) // 2 - 400, 210, 50)
         self.puzzle4 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 490) // 2 - 400, 210, 50)
         self.puzzle5 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 670) // 2 - 400, 210, 50)
-        self.puzzle6 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 850) // 2 - 400, 210, 50)
-        self.puzzle7 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 1030) // 2 - 400, 210, 50)
-        self.puzzle8 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 1210) // 2 - 400, 210, 50)
-        self.puzzle9 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 1390) // 2 - 400, 210, 50)
-        self.puzzle10 = pygame.Rect((screen_width - 400) // 2-100, (screen_height + 1570) // 2 - 400, 210, 50)
-    def draw(self, screen):
+
 
         screen.fill(LIGHTBLUE)
         
@@ -63,34 +58,6 @@ class MenuPage:
 
         pygame.draw.rect(screen, BLUE, self.puzzle6)
         # Draw text on buttons
-        start_text = self.font.render("Puzzle 6", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle6.center)
-        screen.blit(start_text, start_text_pos)
-
-        pygame.draw.rect(screen, BLUE, self.puzzle7)
-        # Draw text on buttons
-        start_text = self.font.render("Puzzle 7", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle7.center)
-        screen.blit(start_text, start_text_pos)
-
-        pygame.draw.rect(screen, BLUE, self.puzzle8)
-        # Draw text on buttons
-        start_text = self.font.render("Puzzle 8", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle8.center)
-        screen.blit(start_text, start_text_pos)
-
-        pygame.draw.rect(screen, BLUE, self.puzzle9)
-        # Draw text on buttons
-        start_text = self.font.render("Puzzle 9", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle9.center)
-        screen.blit(start_text, start_text_pos)
-        
-        pygame.draw.rect(screen, BLUE, self.puzzle10)
-        # Draw text on buttons
-        start_text = self.font.render("Puzzle 10", True, WHITE)
-        start_text_pos = start_text.get_rect(center=self.puzzle10.center)
-        screen.blit(start_text, start_text_pos)
-
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -101,10 +68,15 @@ class MenuPage:
                 mouse_pos = pygame.mouse.get_pos()
                 if self.puzzle1.collidepoint(mouse_pos):
                     return True  # Return True if a puzzle button is clicked
+                if self.puzzle2.collidepoint(mouse_pos):
+                    return True 
+                if self.puzzle3.collidepoint(mouse_pos):
+                    return True 
+                if self.puzzle4.collidepoint(mouse_pos):
+                    return True 
+                if self.puzzle5.collidepoint(mouse_pos):
+                    return True     
                 elif self.goback.collidepoint(mouse_pos):
                     return "goback"  # Return "goback" if the Go Back button is clicked
         return False
     
-
-    
-
